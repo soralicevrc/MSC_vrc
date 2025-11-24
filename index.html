@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Sweet Confession | VRChat Event</title>
+    <style>
+        /* --- 基本設定 --- */
+        :root {
+            --primary-color: #ff9eb5; /* 恋の色 */
+            --primary-dark: #ff7a9a;
+            --secondary-color: #4a3b69; /* 夜・ミステリーの色 */
+            --text-color: #333;
+            --bg-color: #fafafa;
+            --card-bg: #ffffff;
+            --x-color: #000000;
+            --vrc-color: #068095;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        h1, h2, h3 {
+            font-family: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            margin: 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- ヒーローセクション --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(74, 59, 105, 0.6), rgba(255, 158, 181, 0.3)), url('https://placehold.jp/1920x1080.png?text=Event%20Image') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            text-shadow: 0 0 10px rgba(255,158,181,0.8);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: bold;
+            background: rgba(0,0,0,0.4);
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            animation: bounce 2s infinite;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+        /* --- 共通セクション --- */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 10px auto 0;
+        }
+
+        /* --- ストーリー --- */
+        .story-bg {
+            background-color: #fff;
+            border-left: 5px solid var(--primary-color);
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .story-text {
+            font-family: "Yu Mincho", serif;
+            white-space: pre-line;
+        }
+
+        .story-highlight {
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        /* --- システム --- */
+        .system-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .system-box {
+            background: white;
+            border: 1px solid var(--secondary-color);
+            border-radius: 10px;
+            padding: 20px;
+            width: 250px;
+            position: relative;
+        }
+
+        .system-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        /* --- キャスト紹介 --- */
+        .cast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .cast-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .cast-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .cast-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            background-color: #ddd;
+        }
+
+        .cast-content {
+            padding: 20px;
+        }
+
+        .cast-name {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+            border-bottom: 2px dotted var(--primary-color);
+            padding-bottom: 5px;
+        }
+
+        .cast-role {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .cast-desc {
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .cast-situation {
+            background: #fef4f6;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            color: #d65a7a;
+        }
+
+        /* --- 参加方法 (Join) --- */
+        .join-wrapper {
+            text-align: center;
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .join-text {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        /* グループ参加ボタン (目立たせる) */
+        .btn-group {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            border: none;
+            font-size: 1.2rem;
+        }
+
+        /* 主催者リンク */
+        .btn-friend {
+            background: white;
+            color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
+        }
+
+        .btn-friend:hover {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        /* X (Twitter) */
+        .btn-x {
+            background: var(--x-color);
+            color: white;
+        }
+
+        .btn-note {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        /* --- フッター --- */
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+        
+        footer a {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        /* --- レスポンシブ --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .story-bg { padding: 20px; }
+            .system-arrow { transform: rotate(90deg); margin: 10px 0; }
+            .system-container { flex-direction: column; align-items: center; }
+            .join-wrapper { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container">
+            <h1>My Sweet Confession</h1>
+            <p>貴方の選択によって、二人の未来は変わる。</p>
+            <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.9;">VRChat 青春ストーリー体験RPイベント</p>
+        </div>
+        <div class="scroll-down">SCROLL ▼</div>
+    </header>
+
+    <section id="story">
+        <div class="container">
+            <h2 class="section-title">Prologue</h2>
+            <div class="story-bg">
+                <div class="story-text">
+昨日、神様にひとつだけお願いをした。
+――「どうか、あの子とうまくいきますように。」
+
+そして翌日。
+まるで祈りが届いたかのように、彼女からメッセージが届いた。
+「今日、親がいないんだ。……来ない？」
+
+胸の鼓動を抑えながら、約束の時間に間に合うよう急いで家を出た。
+けれど途中で、ふと気づく。
+――ここは、どこだろう？
+
+道を間違えたのか、気づけば見知らぬ場所に立っていた。
+薄暗い部屋。漂う静けさ。
+その中心に、<span class="story-highlight">黒いスーツの男</span>が立っていた。
+
+男は不気味に微笑み、こう告げた。
+「君を、彼女の家まで案内してあげよう。ただし――代償を支払ってもらう。」
+
+どうやら、神様への祈りがこの“迷い道”を生んだらしい。
+その代償とは、これから彼女と出会うたびに、“選択”を迫られること。
+
+選んだ言葉、選んだ行動、そのひとつひとつが運命を変えていく。
+正しい道を進めば、二人は結ばれる。
+だが、もし誤れば――
+
+……すべてを失うかもしれない。
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="system" style="background-color: #f3f0f5;">
+        <div class="container">
+            <h2 class="section-title">System</h2>
+            <p style="text-align: center; margin-bottom: 30px;">物語の結末は、あなたの「選択」に委ねられています。</p>
+            
+            <div class="system-container">
+                <div class="system-box">
+                    <h3>選択の時</h3>
+                    <p>会話の中で2回、<br>運命の分岐点が訪れます。</p>
+                    <p style="font-size:0.8rem; color:#666;">例：お酒を飲む？ 飲まない？</p>
+                </div>
+                <div class="system-arrow">▶</div>
+                <div class="system-box">
+                    <h3>4つの結末</h3>
+                    <p>選択の組み合わせにより、<br>計4種類のエンドへ分岐。</p>
+                </div>
+                <div class="system-arrow">▶</div>
+                <div class="system-box">
+                    <h3>Happy or Bad?</h3>
+                    <p>ハッピーエンドの数は<br>ヒロインによって異なります。<br>慎重な選択を。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cast">
+        <div class="container">
+            <h2 class="section-title">Cast</h2>
+            <div class="cast-grid">
+                
+                <div class="cast-card">
+                    <img src="<div class="cast-card">
+                        <img src="images/neco.jpg" alt="珈琲neco" class="cast-img">
+                             <div class="cast-content">" alt="珈琲neco" class="cast-img">
+                    <div class="cast-content">
+                        <h3 class="cast-name">珈琲neco</h3>
+                        <p class="cast-role">友達以上恋人未満 / 漫画好き</p>
+                        <p class="cast-desc">他の人に対しては大人しめの女の子。自分（あなた）だけに気を許してくれている。今の関係が壊れるのが嫌なため、告白などはしていない。</p>
+                        <div class="cast-situation">
+                            <b>Situation:</b><br>
+                            ヒロインの作った恋愛漫画を読むために、主人公は部屋を訪れる。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cast-card">
+                    <img src="<div class="cast-card">
+                        <img src="images/tyobi.jpg" alt="月紫ちょび" class="cast-img">
+                           <div class="cast-content">" alt="月紫ちょび" class="cast-img">
+                    <div class="cast-content">
+                        <h3 class="cast-name">月紫ちょび</h3>
+                        <p class="cast-role">年上の幼馴染 / 高校三年生</p>
+                        <p class="cast-desc">仲のいい姉弟のように見えていたが、成長するにつれお互いを意識するように。現在、進学先を迷っている。</p>
+                        <div class="cast-situation">
+                            <b>Situation:</b><br>
+                            進路の相談をするため、主人公を部屋に呼ぶ。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cast-card">
+                    <img src="<div class="cast-card">
+                         <img src="images/choco.jpg" alt="ちょこ"" class="cast-img">
+                               <div class="cast-content">" alt="ちょこ" class="cast-img">
+                    <div class="cast-content">
+                        <h3 class="cast-name">ちょこ</h3>
+                        <p class="cast-role">両片思いの友達 / 上京組</p>
+                        <p class="cast-desc">気の知れた仲で、高校生時代はよく一緒に帰っていた。主人公が成人式の日に帰郷した際、再会する。</p>
+                        <div class="cast-situation">
+                            <b>Situation:</b><br>
+                            2人だけの2次会を開くために、主人公は家を訪問する。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cast-card">
+                    <img src="<div class="cast-card">
+                          <img src="images/ginsuzume.jpg" alt="ギンスズメ" class="cast-img">
+                             <div class="cast-content">" alt="ギンスズメ" class="cast-img">
+                    <div class="cast-content">
+                        <h3 class="cast-name">ギンスズメ</h3>
+                        <p class="cast-role">部活の後輩 / 憧れと嫉妬</p>
+                        <p class="cast-desc">元気いっぱいの後輩。主人公には「憧れ」と「嫉妬」を抱いている。部活の足を引っ張るべく「恋愛」に夢中にさせようとする。</p>
+                        <div class="cast-situation">
+                            <b>Situation:</b><br>
+                            その作戦の一環で、主人公を部屋に呼ぶ。
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="join" style="background-color: #f3f0f5;">
+        <div class="container">
+            <h2 class="section-title">Join Us</h2>
+            <div class="join-wrapper">
+                <p class="join-text">
+                    本イベントはVRChatで開催されます。<br>
+                    参加をご希望の方は、以下のVRChatグループにご参加ください。
+                </p>
+
+                <div class="btn-container">
+                    
+                    <div style="width: 100%;">
+                        <a href="https://vrc.group/MSC.7672" target="_blank" class="btn btn-group">
+                            ✨ VRChat Group に参加する
+                        </a>
+                        <div class="btn-note">グループに参加すると、インスタンス情報が通知されます</div>
+                    </div>
+
+                    <div style="width: 100%;">
+                        <a href="https://vrchat.com/home/user/usr_d7d56207-7946-4ace-898b-fb73f60e9d45" target="_blank" class="btn btn-friend">
+                            👤 主催者にフレンド申請 (IL)
+                        </a>
+                        <div class="btn-note">当日のJoin先はこちらのアカウントです</div>
+                    </div>
+
+                    <div style="width: 100%;">
+                        <a href="https://x.com/MSC_vrc" target="_blank" class="btn btn-x">
+                            𝕏 公式Xで最新情報をチェック
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 My Sweet Confession / VRChat Event</p>
+        <p style="font-size: 0.8rem; margin-top: 10px;">
+            <a href="https://x.com/MSC_vrc" target="_blank">Official X</a>
+        </p>
+    </footer>
+
+</body>
+</html>
