@@ -49,6 +49,20 @@
         }
 
         /* --- ヒーローセクション --- */
+        .hero-logo {
+    max-width: 600px; /* ロゴの最大幅を調整 */
+    height: auto;
+    margin: 0 auto 1rem auto; /* 中央寄せと下の余白 */
+    filter: drop-shadow(0 0 10px rgba(255,158,181,0.8)); /* テキストロゴと同じ影 */
+}
+
+/* 元のh1のスタイルは不要になるので削除またはコメントアウトしても良いです */
+.hero h1 {
+    /* font-size: 3rem; */
+    /* text-shadow: 0 0 10px rgba(255,158,181,0.8); */
+    /* margin-bottom: 1rem; */
+    display: none; /* テキストロゴを表示しない場合は追加 */
+}
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(74, 59, 105, 0.6), rgba(255, 158, 181, 0.3)), url('https://placehold.jp/1920x1080.png?text=Event%20Image') center/cover;
@@ -317,7 +331,7 @@
 
     <header class="hero">
         <div class="container">
-            <h1>My Sweet Confession</h1>
+            <img src="images/MSC_rogo.png" alt="My Sweet Confession ロゴ" class="hero-logo">
             <p>貴方の選択によって、二人の未来は変わる。</p>
             <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.9;">VRChat 青春ストーリー体験RPイベント</p>
         </div>
@@ -392,8 +406,8 @@
                 
                 <div class="cast-card">
                     <img src="<div class="cast-card">
-                        <img src="images/neco.jpg" alt="珈琲neco" class="cast-img">
-                             <div class="cast-content">" alt="珈琲neco" class="cast-img">
+                        <img src="images/neco.png" alt="珈琲neco" class="cast-img">
+                             <div class="cast-content">
                     <div class="cast-content">
                         <h3 class="cast-name">珈琲neco</h3>
                         <p class="cast-role">友達以上恋人未満 / 漫画好き</p>
@@ -407,8 +421,8 @@
 
                 <div class="cast-card">
                     <img src="<div class="cast-card">
-                        <img src="images/tyobi.jpg" alt="月紫ちょび" class="cast-img">
-                           <div class="cast-content">" alt="月紫ちょび" class="cast-img">
+                        <img src="images/tyobi.png" alt="月紫ちょび" class="cast-img">
+                           <div class="cast-content">
                     <div class="cast-content">
                         <h3 class="cast-name">月紫ちょび</h3>
                         <p class="cast-role">年上の幼馴染 / 高校三年生</p>
@@ -422,8 +436,8 @@
 
                 <div class="cast-card">
                     <img src="<div class="cast-card">
-                         <img src="images/choco.jpg" alt="ちょこ"" class="cast-img">
-                               <div class="cast-content">" alt="ちょこ" class="cast-img">
+                         <img src="images/choco.png" alt="ちょこ"" class="cast-img">
+                               <div class="cast-content">
                     <div class="cast-content">
                         <h3 class="cast-name">ちょこ</h3>
                         <p class="cast-role">両片思いの友達 / 上京組</p>
@@ -437,8 +451,8 @@
 
                 <div class="cast-card">
                     <img src="<div class="cast-card">
-                          <img src="images/ginsuzume.jpg" alt="ギンスズメ" class="cast-img">
-                             <div class="cast-content">" alt="ギンスズメ" class="cast-img">
+                          <img src="images/ginsuzume.png" alt="ギンスズメ" class="cast-img">
+                             <div class="cast-content">
                     <div class="cast-content">
                         <h3 class="cast-name">ギンスズメ</h3>
                         <p class="cast-role">部活の後輩 / 憧れと嫉妬</p>
@@ -498,4 +512,5 @@
     </footer>
 
 </body>
+
 </html>
